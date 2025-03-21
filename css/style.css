@@ -134,27 +134,19 @@ Step 11: Edit the css for the header tag (all instances) and the nav_links class
 Step 12: Edit the css for the pricing and card classes to match our example. Part of achieving this is by using a flex-property to specify a “size” of 275px. Notice that the elements do not have the same height, but do have the same width.
 */
 
-/* QUESTION - not sure how to change height */
-
     .pricing {
-        /* align-content: ; */
         flex-wrap: wrap;
- /* Aligns cards at the top */
-
+        align-items: center;  /* Aligns cards at the center regardless of difference in height */
     }
     .card {
         flex-basis: 275px; /* flex basis: shows minimum size value */
     }
 
-    /* THIS DOESNT WORK? */
-    /* .card:nth-child(2) {
-        align-self: flex-end; /* Moves the middle card to the bottom */
-
-
     /* 
     Step 13: Modify the first header (the one not inside main) so that it remains visible at the top of the screen even as we scroll down. Make sure that it is always visible. 
     */
     
+    /* specificity selector, missing another property */
     /* QUESTION - This doesn't work */
     body header:first-of-type { /* get the first header? */
         position: sticky; /* keep header on top while scrolling */
@@ -198,10 +190,13 @@ Prefers reduced motion citation: https://developer.mozilla.org/en-US/docs/Web/CS
     }
 
     /* nav - making sure nav takes up entire width of the screen */
+    nav {
+        width: 100%;
+    }
+
     .nav_links {
         flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: space-around;
     }
 
     /* 
@@ -209,6 +204,7 @@ Prefers reduced motion citation: https://developer.mozilla.org/en-US/docs/Web/CS
     */
     .pricing {
         align-items: flex-end;
+        flex-wrap: nowrap;
     }
 
     /* 
@@ -219,10 +215,11 @@ Prefers reduced motion citation: https://developer.mozilla.org/en-US/docs/Web/CS
         flex-basis: 325px;
     }
 
+
     /* 
     Step 20: No part of the gallery should be visible.
     */
-    .gallery {
+    .gallery, #gallery { /* get gallery class & ID to hide elements */
         display: none;
     }
 
@@ -238,6 +235,3 @@ Prefers reduced motion citation: https://developer.mozilla.org/en-US/docs/Web/CS
         content: "👍"; /* select 2nd list item with nth-child; use ::after to insert emoji after content of specified 2nd element */
     }
 }
-
-
-

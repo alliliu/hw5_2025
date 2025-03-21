@@ -76,6 +76,7 @@ Step 4: Edit the css for the nav_links class to use flex to match our example. D
 Step 5: Style the links so that they have the same color even after they have been visited.
 */
 
+/* QUESTION */
 /* is this what you are looking for? */
 .nav_links a:link,
 .nav_links a:visited {
@@ -90,7 +91,7 @@ Step 7: Edit the css for the card class to match our example. Achieve this by us
 Step 8: Edit the css for the pricing class to match our example. You should use flex and the cards should be centered both horizontally and vertically.
 */
 
-
+/* QUESTION */
 /* Are we supposed to do media query? */
 @media screen and (min-width: 720px) {
     .card {
@@ -124,18 +125,37 @@ Step 9: Style the images in the gallery class. These elements will have a solid 
 /* 
 Step 11: Edit the css for the header tag (all instances) and the nav_links class to match our example using flex-properties. The logo should be as far to the left as possible and the links as far to the right as possible. Use flex properties, NOT position properties.
 */
-
-
+@media screen and (min-width: 900px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }  
+    .nav_links {
+        flex-direction: row;
+    }
 
 /* 
 Step 12: Edit the css for the pricing and card classes to match our example. Part of achieving this is by using a flex-property to specify a “size” of 275px. Notice that the elements do not have the same height, but do have the same width.
 */
 
+/* QUESTION - not sure how to change height */
 
-/* 
-Step 13: Modify the first header (the one not inside main) so that it remains visible at the top of the screen even as we scroll down. Make sure that it is always visible. 
-*/
+    /* .pricing {
 
+    } */
+    .card {
+        flex-basis: 275px; /* flex basis: shows minimum size value */
+    }
+
+    /* 
+    Step 13: Modify the first header (the one not inside main) so that it remains visible at the top of the screen even as we scroll down. Make sure that it is always visible. 
+    */
+    
+    /* QUESTION - This doesn't work */
+    body header:first-of-type { /* get the first header? */
+        position: sticky; /* keep header on top while scrolling */
+    }
+}
 
 /* 
 Step 14: The logo should appear but not be animated if prefers-reduced-motion is selected in the accessibility preferences. 
@@ -149,37 +169,74 @@ Prefers reduced motion citation: https://developer.mozilla.org/en-US/docs/Web/CS
     }
 }
 
+/* PRINT */
+@media print {
+    /* 
+    Step 15: Change the font on your body to Arial with a backup value of  Helvetica
 
-/* 
-Step 15: Change the font on your body to Arial with a backup value of  Helvetica
-*/
+    Print Citation: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Printing
+    */
+
+    /* 
+    Step 16: The background image should be removed. 
+    */
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: none;
+    }
+
+    /* 
+    Step 17: Edit the nav/nav_links elements so that they are spaced according to the image above.
+    */
+    header {
+        flex-direction: column;
+        /* justify-content: space-between; */
+    }
+
+    .nav_links {
+        flex-direction: row;
+    }
+
+    /* QUESTION: not sure how to space elements in between */
+    .nav_links * {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* 
+    Step 18: Edit the pricing class so that the elements align along the bottom.  As long as it aligns along the bottom we don't care if the cards aren't the same height.
+    */
+    .pricing {
+        align-items: flex-end;
+    }
+
+    /* 
+    Step 19: The card elements should have a solid border 2px of #45ADDD and use flex-basis of 325px. 
+    */
+    .card {
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* 
+    Step 20: No part of the gallery should be visible.
+    */
+    .gallery {
+        display: none;
+    }
+
+    /* 
+    Step 21: Without using list-style-type add the thumbs up entity as shown in the cards. 
+
+    After Pseudoelement Citation: https://www.w3schools.com/css/css_pseudo_elements.asp
+
+    Adding emojis in CSS Citation: https://dev.to/beumsk/how-to-add-emoji-s-in-your-website-using-html-css-or-javascript-4g6g
+    */
+
+    .card li:nth-child(2)::after {
+        content: "👍"; /* select 2nd list item with nth-child; use ::after to insert emoji after content of specified 2nd element */
+    }
+}
 
 
-/* 
-Step 16: The background image should be removed. 
-*/
 
-
-/* 
-Step 17: Edit the nav/nav_links elements so that they are spaced according to the image above.
-*/
-
-
-/* 
-Step 18: Edit the pricing class so that the elements align along the bottom.  As long as it aligns along the bottom we don't care if the cards aren't the same height.
-*/
-
-
-/* 
-Step 19: The card elements should have a solid border 2px of #45ADDD and use flex-basis of 325px. 
-*/
-
-
-/* 
-Step 20: No part of the gallery should be visible.
-*/
-
-
-/* 
-Step 21: Without using list-style-type add the thumbs up entity as shown in the cards. 
-*/
